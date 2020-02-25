@@ -27,3 +27,12 @@ git dif
 ```
 git push
 ```
+
+Exit from branch/cancel changes
+```
+git checkout <Branch>
+```
+save
+```
+git stash
+```

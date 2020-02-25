@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React, {Component} from 'react';
-import {Share, ActivityIndicator} from 'react-native';
+import React, { Component } from 'react';
+import { Share, ActivityIndicator } from 'react-native';
 import {
   Container,
   Header,
@@ -14,6 +14,8 @@ import {
   Icon,
   Text,
   ScrollView,
+  Card,
+  CardItem,
   Button,
   Left,
   Body,
@@ -27,16 +29,16 @@ export default class Home extends Component {
 
     global.getData = [];
     global.counter = 0;
-    
+
     this.state = {
       loading: false,
       modalVisible: false,
       getData: [],
-      username:"",  
+      username: "",
     };
   }
 
-  static navigationOptions = ({navigation}) => {    
+  static navigationOptions = ({ navigation }) => {
     return {
       swipeEnabled: false,
       gestureResponseDistance: {
@@ -44,20 +46,20 @@ export default class Home extends Component {
         vertical: -1,
       },
       header: (
-        <Header searchBar rounded>        
+        <Header searchBar rounded>
           <Button transparent>
             <Icon name="menu" />
           </Button>
-        
+
           <Item>
             <Input placeholder="Buscar..." />
             <Icon name="people" />
           </Item>
-          
+
           <Button transparent>
             <Icon name="funnel"></Icon>
           </Button>
-          
+
 
         </Header>
       ),
@@ -73,11 +75,11 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
-    this.props.navigation.setParams({handleRemove: this.removeVehicle});
+    this.props.navigation.setParams({ handleRemove: this.removeVehicle });
   }
 
   removeVehicle = () => {
-    this.setState({modalVisible: !this.state.modalVisible});
+    this.setState({ modalVisible: !this.state.modalVisible });
   };
 
   onShare = async () => {
@@ -119,8 +121,25 @@ export default class Home extends Component {
       <Container>
         <Header>
           <Text>Welcome: {name}</Text>
-          
+
         </Header>
+
+
+        <Card>
+          <CardItem>
+            <CardItem header>
+              <Text>
+                CHARGING LAZERS
+              </Text>
+            </CardItem>
+            <Body>
+              <Text>
+                DESTROY THEM WITH LAZERS
+                </Text>
+            </Body>
+          </CardItem>
+        </Card>
+
         <Content />
       </Container>
     );

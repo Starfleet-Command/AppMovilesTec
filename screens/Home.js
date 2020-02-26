@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import { Share, ActivityIndicator } from 'react-native';
+import styles, { IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL } from './styles';
 import {
   Container,
   Header,
@@ -141,6 +142,41 @@ export default class Home extends Component {
         </Card>
 
         <Content />
+
+        <Footer>
+          <FooterTab>
+            <Button>
+              <Text
+                button
+                onPress={() =>
+                  this.props.navigation.push('Deals', {
+                    username: this.state.username,
+                  })
+                }
+              >
+                Wishlist
+                </Text>
+
+            </Button>
+            <Button active>
+              <Text>Browse</Text>
+            </Button>
+            <Button>
+              <Text>Daily Deals</Text>
+            </Button>
+            <Button>
+              <Text
+                button
+                onPress={() =>
+                  this.props.navigation.push('Scryfall', {
+                  })
+                }
+              >
+                MAGIC
+                </Text>
+            </Button>
+          </FooterTab>
+        </Footer>
       </Container>
     );
   }

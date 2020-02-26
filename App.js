@@ -5,7 +5,8 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Login from './screens/Login'
 import Home from './screens/Home'
 import Details from './screens/Details'
-import Info from './screens/Info'
+import Deals from './screens/Deals'
+import Scryfall from './screens/Scryfall'
 
 
 
@@ -18,7 +19,8 @@ const AppNavigator = createStackNavigator(
     Login: Login,
     Home: Home,
     Details: Details,
-    Info: Info
+    Deals: Deals,
+    Scryfall: Scryfall,
 
   },
   {

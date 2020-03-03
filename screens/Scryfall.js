@@ -9,9 +9,14 @@ import {
     Body,
     Footer,
     FooterTab,
+    Picker,
+    Form,
 } from 'native-base';
 import { View, Image, TextInput, TouchableOpacity, Linking } from 'react-native';
 import styles, { IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL } from './styles';
+import wishlist from '../wishlist.json'
+
+
 
 export default class CardItemBordered extends Component {
     constructor(props) {
@@ -24,6 +29,8 @@ export default class CardItemBordered extends Component {
         image_uri: 'none',
         price: ' ',
         store_uri: '',
+        quantity: '0',
+        id: '1',
     };
 
     async getCardsFromApiAsync() {
@@ -35,6 +42,8 @@ export default class CardItemBordered extends Component {
                         image_uri: responseJson.image_uris.small,
                         price: responseJson.prices.usd,
                         store_uri: responseJson.purchase_uris.tcgplayer,
+                        id: responseJson.id,
+                        card: responseJson.name,
                     },
                     function () { },
                 );
@@ -43,6 +52,9 @@ export default class CardItemBordered extends Component {
                 console.error(error);
             });
     }
+
+
+
 
     render() {
         return (
@@ -96,8 +108,22 @@ export default class CardItemBordered extends Component {
                             <Text>Buy on TcgPlayer</Text>
                         </CardItem>
                     </Card>
+                    <View style={styles.button}>
+                        <Text
+                            button
+                            onPress={() =>
+                                this.props.navigation.push('Deals', {
+                                    card: this.state.card, image_uri: this.state.image_uri, price: this.state.price, quantity: this.state.quantity, id: this.state.id,
+                                })
+                            }
+                            style={styles.buttonText}>
+                            Add to Wishlist
+                     </Text>
+                    </View>
+
                 </Content>
             </Container>
         );
     }
 }
+

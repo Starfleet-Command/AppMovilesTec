@@ -139,5 +139,10 @@
     <orderEntry type="module" module-name="react-native-safe-area-context" />
     <orderEntry type="module" module-name="react-native-screens" />
     <orderEntry type="module" module-name="react-native-vector-icons" />
+    <orderEntry type="module" module-name="react-native-community_masked-view" />
+    <orderEntry type="module" module-name="react-native-gesture-handler" />
+    <orderEntry type="module" module-name="react-native-safe-area-context" />
+    <orderEntry type="module" module-name="react-native-screens" />
+    <orderEntry type="module" module-name="react-native-vector-icons" />
   </component>
 </module>

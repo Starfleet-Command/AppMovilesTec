@@ -5,8 +5,9 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Login from './screens/Login'
 import Home from './screens/Home'
 import Details from './screens/Details'
-import Deals from './screens/Deals'
+import Wishlist from './screens/Wishlist'
 import Scryfall from './screens/Scryfall'
+import Assistant from './screens/Assistant'
 
 
 
@@ -19,12 +20,13 @@ const AppNavigator = createStackNavigator(
     Login: Login,
     Home: Home,
     Details: Details,
-    Deals: Deals,
+    Wishlist: Wishlist,
     Scryfall: Scryfall,
+    Assistant: Assistant,
 
   },
   {
-    initialRouteName: "Scryfall"
+    initialRouteName: "Home"
   }
 );
 

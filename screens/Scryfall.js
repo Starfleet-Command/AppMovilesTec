@@ -37,16 +37,18 @@ export default class CardItemBordered extends Component {
         return fetch(this.state.uri)
             .then(response => response.json())
             .then(responseJson => {
-                this.setState(
-                    {
-                        image_uri: responseJson.image_uris.small,
-                        price: responseJson.prices.usd,
-                        store_uri: responseJson.purchase_uris.tcgplayer,
-                        id: responseJson.id,
-                        card: responseJson.name,
-                    },
-                    function () { },
-                );
+                if (typeof responseJson !== 'undefined') {
+                    this.setState(
+                        {
+                            image_uri: responseJson.image_uris.small,
+                            price: responseJson.prices.usd,
+                            store_uri: responseJson.purchase_uris.tcgplayer,
+                            id: responseJson.id,
+                            card: responseJson.name,
+                        },
+                        function () { },
+                    );
+                }
             })
             .catch(error => {
                 console.error(error);
@@ -67,9 +69,7 @@ export default class CardItemBordered extends Component {
                             onChangeText={card =>
                                 this.setState({
                                     card,
-                                    uri:
-                                        'https://api.scryfall.com/cards/named?fuzzy=' +
-                                        this.state.card,
+                                    uri: 'https://api.scryfall.com/cards/named?fuzzy=' + this.state.card,
                                 })
                             }
                             value={this.state.card}
@@ -83,7 +83,7 @@ export default class CardItemBordered extends Component {
                                 onPress={() => this.getCardsFromApiAsync()}
                                 style={styles.buttonText}>
                                 Search
-              </Text>
+                             </Text>
                         </View>
                     </TouchableOpacity>
                     <Card>
@@ -112,7 +112,7 @@ export default class CardItemBordered extends Component {
                         <Text
                             button
                             onPress={() =>
-                                this.props.navigation.push('Deals', {
+                                this.props.navigation.push('Wishlist', {
                                     card: this.state.card, image_uri: this.state.image_uri, price: this.state.price, quantity: this.state.quantity, id: this.state.id,
                                 })
                             }

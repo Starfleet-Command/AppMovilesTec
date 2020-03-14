@@ -125,22 +125,6 @@ export default class Home extends Component {
 
         </Header>
 
-
-        <Card>
-          <CardItem>
-            <CardItem header>
-              <Text>
-                CHARGING LAZERS
-              </Text>
-            </CardItem>
-            <Body>
-              <Text>
-                DESTROY THEM WITH LAZERS
-                </Text>
-            </Body>
-          </CardItem>
-        </Card>
-
         <Content />
 
         <Footer>
@@ -149,7 +133,7 @@ export default class Home extends Component {
               <Text
                 button
                 onPress={() =>
-                  this.props.navigation.push('Deals', {
+                  this.props.navigation.push('Wishlist', {
                     username: this.state.username,
                   })
                 }
@@ -162,7 +146,16 @@ export default class Home extends Component {
               <Text>Browse</Text>
             </Button>
             <Button>
-              <Text>Daily Deals</Text>
+              <Text
+                button
+                onPress={() =>
+                  this.props.navigation.push('Assistant', {
+                  })
+                }
+
+              >
+                Assistant
+              </Text>
             </Button>
             <Button>
               <Text
@@ -172,7 +165,7 @@ export default class Home extends Component {
                   })
                 }
               >
-                MAGIC
+                Card Search
                 </Text>
             </Button>
           </FooterTab>

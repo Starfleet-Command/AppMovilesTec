@@ -33,6 +33,7 @@ export default class Assistant extends Component {
         entity: '',
         cardText: '',
         scryfallUri: '',
+        legality: '',
     };
 
     async getCardInfo() {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Header, Content, Card, CardItem, Text, Body, Footer, FooterTab, Thumbnail, Button, Icon, Item, Input } from "native-base";
-import { View, Image, FlatList, Linking } from 'react-native';
+import { View, Image, FlatList, Linking, AsyncStorage } from 'react-native';
 import styles from './styles';
 
 
@@ -12,6 +12,7 @@ export default class CardItemBordered extends Component {
         this.state = {
             getProducts: [],
             textData: [],
+            latestCard: '',
         };
     }
 
@@ -53,6 +54,19 @@ export default class CardItemBordered extends Component {
         };
     };
 
+    retrieveData = async () => {
+        try {
+            const Savedcard = await AsyncStorage.getItem('name');
+            console.log(Savedcard);
+            if (Savedcard != null) {
+                this.setState({ latestCard: Savedcard })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
 
     componentDidMount() {
         const { navigation } = this.props;
@@ -78,28 +92,39 @@ export default class CardItemBordered extends Component {
 
         }
         this.setState({ getProducts: Localwishlist })
-
+        this.retrieveData();
     }
+
 
     setSearchText = event => {
 
         searchText = event;
         data = Localwishlist;
         searchText = searchText.trim().toLowerCase();
-        //console.log(data.carddata)
+
         data = data.carddata.filter(l => { return l.name.toLowerCase().match(searchText) })
         this.setState({ textData: data })
     };
 
-    buyAll() {
+    buyAll(store) {
         var storeUrl;
         var cards = [];
-        for (let i = 0; i < Object.keys(this.state.getProducts.carddata).length; i++) {
-            cards.push('' + this.state.getProducts.carddata[i].quantity + ' ' + this.state.getProducts.carddata[i].name + "||")
 
+        if (store == "TCG") {
+            for (let i = 0; i < Object.keys(this.state.getProducts.carddata).length; i++) {
+                cards.push('' + this.state.getProducts.carddata[i].quantity + ' ' + this.state.getProducts.carddata[i].name + "||")
+
+            }
+
+            storeUrl = 'https://store.tcgplayer.com/massentry?c=' + cards.join(' ');
+        }
+        else if (store == "CardKingdom") {
+            for (let i = 0; i < Object.keys(this.state.getProducts.carddata).length; i++) {
+                cards.push('' + this.state.getProducts.carddata[i].quantity + '' + this.state.getProducts.carddata[i].name + "%0D%0A")
+            }
+            storeUrl = 'https://www.cardkingdom.com/builder/mtg?maindeck=' + cards.join('') + '&format=all';
         }
 
-        storeUrl = 'https://store.tcgplayer.com/massentry?c=' + cards.join(' ');
         console.log(storeUrl)
         Linking.openURL(storeUrl);
 
@@ -108,10 +133,15 @@ export default class CardItemBordered extends Component {
 
 
 
+
     render() {
         return (
             <View>
-
+                <Card>
+                    <Text>
+                        The most recently added card is {this.state.latestCard}
+                    </Text>
+                </Card>
                 <FlatList
                     vertical={true}
                     data={this.state.textData}
@@ -144,10 +174,21 @@ export default class CardItemBordered extends Component {
                     ListFooterComponent={<View style={styles.button}>
                         <Text
                             button
-                            onPress={() => this.buyAll()}
+                            onPress={() => this.buyAll("TCG")}
                             style={styles.buttonText}>
                             Buy All in TCGPlayer
                      </Text>
+
+                    </View>}
+
+                    ListFooterComponent={<View style={styles.button}>
+                        <Text
+                            button
+                            onPress={() => this.buyAll("CardKingdom")}
+                            style={styles.buttonText}>
+                            Buy All in CardKingdom
+                     </Text>
+
                     </View>}
                 />
 

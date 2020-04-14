@@ -2,33 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a1b99d8-2fd8-488a-987a-420cbbbdee07" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../Lenguajes/HelloWorld.rkt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Lenguajes/HelloWorld.rkt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/HjpwFimE2aNlOSBhQmsHLLTFOTw=" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/HjpwFimE2aNlOSBhQmsHLLTFOTw=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../screens/Deals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../screens/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../screens/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../screens/Assistant.js" beforeDir="false" afterPath="$PROJECT_DIR$/../screens/Assistant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../screens/Scryfall.js" beforeDir="false" afterPath="$PROJECT_DIR$/../screens/Scryfall.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/CPPM.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Progra Avanzada/CPPM.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/ConvertPPM.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Progra Avanzada/ConvertPPM.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/ConvertPPM.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Progra Avanzada/ConvertPPM.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/cppmDriver.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Progra Avanzada/cppmDriver.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/ninja2-ascii.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Progra Avanzada/ninja2-ascii.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/ninja2.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Progra Avanzada/ninja2.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../screens/Wishlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../screens/Wishlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/Cypher" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/cypherDriver.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/encoded_example2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/example.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/rail_cypher.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Progra Avanzada/rail_cypher.h" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,14 +135,14 @@
     <panes>
       <pane id="Scope" />
       <pane id="ProjectPane" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="D:/AndroSDK" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Proyectos_Moviles/Mapas/android" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RunDashboard">
@@ -259,15 +249,16 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="5" sideWeight="0.5010101" side_tool="true" visible="true" weight="0.3298731" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5023569" side_tool="true" weight="0.3298731" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4989899" visible="true" weight="0.3298731" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49764308" visible="true" weight="0.3298731" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info active="true" anchor="right" id="Assistant" order="5" visible="true" weight="0.32996634" />
     </layout>
   </component>
 </project>

@@ -12,7 +12,7 @@ import {
     Picker,
     Form,
 } from 'native-base';
-import { View, Image, TextInput, TouchableOpacity, Linking } from 'react-native';
+import { View, Image, TextInput, TouchableOpacity, Linking, AsyncStorage } from 'react-native';
 import styles, { IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL } from './styles';
 import wishlist from '../wishlist.json'
 
@@ -24,7 +24,7 @@ export default class CardItemBordered extends Component {
     }
 
     state = {
-        card: 'Decimate',
+        card: '',
         uri: 'https://api.scryfall.com/cards/named?fuzzy=Aus+com',
         image_uri: 'none',
         price: ' ',
@@ -55,6 +55,18 @@ export default class CardItemBordered extends Component {
             });
     }
 
+    storeData = async () => {
+        try {
+            await AsyncStorage.setItem('name', this.state.card);
+            // console.log(AsyncStorage.getItem('name'));
+            this.props.navigation.push('Wishlist', {
+                card: this.state.card, image_uri: this.state.image_uri, price: this.state.price, quantity: this.state.quantity, id: this.state.id,
+            })
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
 
 
@@ -108,21 +120,20 @@ export default class CardItemBordered extends Component {
                             <Text>Buy on TcgPlayer</Text>
                         </CardItem>
                     </Card>
+
+
                     <View style={styles.button}>
                         <Text
                             button
                             onPress={() =>
-                                this.props.navigation.push('Wishlist', {
-                                    card: this.state.card, image_uri: this.state.image_uri, price: this.state.price, quantity: this.state.quantity, id: this.state.id,
-                                })
-                            }
+                                this.storeData()}
                             style={styles.buttonText}>
                             Add to Wishlist
                      </Text>
                     </View>
 
                 </Content>
-            </Container>
+            </Container >
         );
     }
 }

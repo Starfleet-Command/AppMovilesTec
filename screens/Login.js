@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import styles, {IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL} from './styles';
 import logo from '../images/login/logo.png';
+import * as firebase from 'firebase';
 
 export default class Demo extends Component {
   constructor(props) {
@@ -19,9 +20,19 @@ export default class Demo extends Component {
     this.imageHeight = new Animated.Value(IMAGE_HEIGHT);
   }
   state = {
-    username: 'demos',
-    password: 'demos',
+    email: "",
+    password: "",
+    errorMessage: null,
   };
+
+  handleLogin = () => {
+    const {email, password} = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.props.navigation.navigate('Home'))
+      .catch(error => this.setState({errorMessage: error.message}));
+  }
 
   static navigationOptions = {header: null};
 
@@ -76,16 +87,22 @@ export default class Demo extends Component {
             source={logo}
             style={[styles.logo, {height: this.imageHeight}]}
           />
-          <View style={styles.container}>
-            <Text style={styles.welcome}>WELCOME</Text>
 
+          <View style={styles.container}>
+          <View style={styles.errorMessage}>
+              {this.state.errorMessage && (
+                <Text>{this.state.errorMessage}</Text>
+              )}
+          </View>
+            <Text style={styles.welcome}>WELCOME</Text>
             <View style={styles.emailContainer}>
               <TextInput
                 style={styles.textInput}
                 placeholder="Email"
                 keyboardType="email-address"
-                onChangeText={value => this.setState({username: value})}
-                value={this.state.username}
+                onChangeText={value => this.setState({email: value})}
+                //onChangeText={email => this.setState({email})}
+                value={this.state.email}
               />
             </View>
             <View style={styles.passwordContainer}>
@@ -103,26 +120,20 @@ export default class Demo extends Component {
                 <Text style={styles.forgotText}>¿Olvide mi password?</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <View style={styles.button}>
-                <Text
-                  button
-                  onPress={() =>
-                    this.props.navigation.push('Home', {
-                      username: this.state.username,
-                    })
-                  }
-                  style={styles.buttonText}>
-                  Iniciar
+
+            <TouchableOpacity style={styles.button} onPress={this.handleLogin}>
+                <Text style={styles.buttonText}>
+                  Iniciar Sesion
                 </Text>
-              </View>
             </TouchableOpacity>
+
           </View>
         </Animated.View>
         <View style={styles.normalContainer}>
           <Text style={styles.normalText}>¿No tienes cuenta?</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Register")}>
           <View style={styles.createAccount}>
             <Text style={styles.createText}>Crear una núeva</Text>
           </View>

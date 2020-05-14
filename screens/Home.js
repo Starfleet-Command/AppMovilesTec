@@ -23,6 +23,7 @@ import {
   Right,
   Title,
 } from 'native-base';
+import * as firebase from 'firebase'
 
 export default class Home extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Home extends Component {
       loading: false,
       modalVisible: false,
       getData: [],
-      username: "",
+      currentUser: null,
     };
   }
 
@@ -76,8 +77,14 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
+    const { currentUser } = firebase.auth();
+    this.setState({ currentUser });
     this.props.navigation.setParams({ handleRemove: this.removeVehicle });
   }
+
+  signOutUser = () =>{
+    firebase.auth().signOut();
+  };
 
   removeVehicle = () => {
     this.setState({ modalVisible: !this.state.modalVisible });
@@ -109,7 +116,8 @@ export default class Home extends Component {
 
   render() {
     const { navigation } = this.props;
-    const name = navigation.getParam('username');
+    const { currentUser } = this.state;
+    var user = firebase.auth().currentUser;
 
     if (this.state.loading) {
       return (
@@ -121,7 +129,7 @@ export default class Home extends Component {
     return (
       <Container>
         <Header>
-          <Text>Welcome: {name}</Text>
+          <Text>Welcome: {user.displayName}</Text>
 
         </Header>
 
@@ -134,7 +142,7 @@ export default class Home extends Component {
                 button
                 onPress={() =>
                   this.props.navigation.push('Wishlist', {
-                    username: this.state.username,
+                    currentUser: this.state.currentUser,
                   })
                 }
               >
@@ -166,6 +174,16 @@ export default class Home extends Component {
                 }
               >
                 Card Search
+                </Text>
+            </Button>
+            <Button>
+              <Text
+                button
+                onPress={
+                  this.signOutUser
+                }
+              >
+                Logout
                 </Text>
             </Button>
           </FooterTab>

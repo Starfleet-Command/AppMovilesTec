@@ -1,4 +1,4 @@
-#Thu Mar 12 14:13:53 CST 2020
-base.0=C\:\\Users\\Juan Fco\\Desktop\\Programacion\\Sexto Semestre\\Moviles\\AppMovilesTec\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Wed May 13 18:40:01 CDT 2020
+base.0=C\:\\Semestres_TEC\\Semestre 6\\AppMob\\AppMovilesTec\\android\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

@@ -31,9 +31,10 @@ export default class Assistant extends Component {
         query: '',
         intent: '',
         entity: '',
-        cardText: '',
+        formatEntity: '',
         scryfallUri: '',
-        legality: '',
+        legality: [],
+        response: '',
     };
 
     async getCardInfo() {
@@ -41,13 +42,62 @@ export default class Assistant extends Component {
             .then(response => response.json())
             .then(responseJson => {
                 if (typeof responseJson !== 'undefined') {
-                    this.setState(
-                        {
-                            cardText: responseJson.oracle_text
-                        },
-                        function () { },
+                    if (this.state.intent == "Oracle") {
+                        this.setState(
+                            {
+                                response: responseJson.oracle_text
+                            },
+                            function () { },
 
-                    );
+                        );
+                    }
+                    else if (this.state.intent == "Rarity") {
+                        this.setState(
+                            {
+                                response: responseJson.rarity
+                            },
+                            function () { },
+
+                        );
+                    }
+                    else if (this.state.intent == "Flavor Text") {
+                        this.setState(
+                            {
+                                response: responseJson.flavor_text
+                            },
+                            function () { },
+
+                        );
+                    }
+                    else if (this.state.intent == "Legality") {
+                        var results = [];
+                        var format = this.state.formatEntity;
+                        this.setState(
+                            {
+                                response: responseJson.legalities
+                            },
+                            function () { },
+
+                        );
+
+                        for (var key in legality) {
+                            if (key == format) {
+
+                                this.state.isLegal = legality[0].key
+                            }
+
+                        }
+                    }
+
+                    else if (this.state.intent == "Set") {
+                        this.setState(
+                            {
+                                response: responseJson.set_name
+                            },
+                            function () { },
+
+                        );
+                    }
 
                 }
             })
@@ -66,13 +116,22 @@ export default class Assistant extends Component {
                         {
                             intent: responseJson.intents[0].intent,
                             entity: responseJson.entities[0].entity,
+
                             scryfallUri: "https://api.scryfall.com/cards/named?fuzzy=" + this.state.entity
                         },
                         function () { },
                     );
-                    if (this.state.intent == "Oracle") {
-                        this.getCardInfo();
+                    if (intent == "Legality") {
+                        this.setState(
+                            {
+                                formatEntity: responseJson.entities[1].entity,
+                            },
+                            function () { },
+                        );
                     }
+
+                    this.getCardInfo();
+
 
                 }
             })
@@ -125,7 +184,7 @@ export default class Assistant extends Component {
                                     {this.state.entity}:
                                 </Text>
                                 <Text>
-                                    {this.state.cardText + '\n'}
+                                    {this.state.response + '\n'}
                                 </Text>
                             </Body>
                         </CardItem>

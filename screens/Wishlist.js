@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Container, Header, Content, Card, CardItem, Text, Body, Footer, FooterTab, Thumbnail, Button, Icon, Item, Input } from "native-base";
+import { Container, Header, Content, Card, CardItem, TouchableHighlight, Text, Body, Footer, FooterTab, Thumbnail, Button, Icon, Item, Input } from "native-base";
 import { View, Image, FlatList, Linking, AsyncStorage } from 'react-native';
 import styles from './styles';
-
+import * as firebase from 'firebase';
 
 
 export default class CardItemBordered extends Component {
@@ -55,6 +55,19 @@ export default class CardItemBordered extends Component {
     };
 
     retrieveData = async () => {
+        var carddata = [];
+        await firebase.database().ref('users/' + firebase.auth().currentUser.uid+'/').once('value').then(function(snapshot){
+            carddata = snapshot.val().cards;
+            console.log(carddata);
+
+        });
+
+        this.setState({
+            textData: Object.values(carddata),
+            getProducts: Object.values(carddata),
+        });
+        console.log(this.state.textData);
+            /*
         try {
             const Savedcard = await AsyncStorage.getItem('name');
             console.log(Savedcard);
@@ -64,6 +77,8 @@ export default class CardItemBordered extends Component {
         } catch (error) {
             console.log(error);
         }
+        */
+        
     };
 
 
@@ -77,21 +92,6 @@ export default class CardItemBordered extends Component {
 
         this.props.navigation.setParams({ searchText: this.setSearchText });
 
-
-        var i;
-        for (i = 0; i < Object.keys(Localwishlist.carddata).length; i++) {
-
-
-            if (Localwishlist.carddata[i].id == id) {
-                Localwishlist.carddata[i].quantity++;
-
-            }
-            else if (i == Localwishlist.carddata.length - 1 && id != undefined) {
-                Localwishlist.carddata.push({ id: id, name: card, image: image_uri, price: price, quantity: "0" })
-            }
-
-        }
-        this.setState({ getProducts: Localwishlist })
         this.retrieveData();
     }
 
@@ -99,11 +99,12 @@ export default class CardItemBordered extends Component {
     setSearchText = event => {
 
         searchText = event;
-        data = Localwishlist;
+        data = this.state.textData;
         searchText = searchText.trim().toLowerCase();
 
-        data = data.carddata.filter(l => { return l.name.toLowerCase().match(searchText) })
-        this.setState({ textData: data })
+        data = this.state.textData.filter(l => { return l.card.toLowerCase().match(searchText) });
+        this.setState({ getProducts: data });
+        console.log(this.state.getProducts);
     };
 
     buyAll(store) {
@@ -130,6 +131,15 @@ export default class CardItemBordered extends Component {
 
     }
 
+    removeFavorite(item){
+        try {
+            firebase.database().ref('users/' + firebase.auth().currentUser.uid+'/cards/'+item.id).remove();
+            this.retrieveData();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
 
 
@@ -144,7 +154,7 @@ export default class CardItemBordered extends Component {
                 </Card>
                 <FlatList
                     vertical={true}
-                    data={this.state.textData}
+                    data={this.state.getProducts}
                     keyExtractor={(item) => item.id}
                     //{...console.log(this.state.getProducts.carddata)}
                     renderItem={({ item }) => (
@@ -152,7 +162,7 @@ export default class CardItemBordered extends Component {
                         <Card>
                             <CardItem header bordered>
                                 <Text style={{ fontWeight: "bold" }}>
-                                    {item.name}
+                                    {item.card}
                                 </Text>
                             </CardItem>
 
@@ -161,15 +171,20 @@ export default class CardItemBordered extends Component {
                                 <Body>
                                     <Image
                                         style={{ width: 150, height: 204 }}
-                                        source={{ uri: item.image }}
+                                        source={{ uri: item.image_uri }}
                                     />
                                     <Text style={{ fontWeight: "bold" }}>
                                         Quantity: {item.quantity + '\n'}
                                         Total Price: {item.price * item.quantity}
                                     </Text>
+                                    <Text onPress={() => this.removeFavorite(item)}>Borrar de Favoritos</Text>
+                                    
+                                    
                                 </Body>
+                                
                             </CardItem>
                         </Card>
+                        
                     )}
                     ListFooterComponent={<View style={styles.button}>
                         <Text

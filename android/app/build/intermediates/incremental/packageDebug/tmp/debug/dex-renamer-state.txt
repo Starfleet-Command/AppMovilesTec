@@ -1,4 +1,4 @@
-#Wed May 13 18:40:01 CDT 2020
-base.0=C\:\\Semestres_TEC\\Semestre 6\\AppMob\\AppMovilesTec\\android\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
+#Sun May 31 16:39:36 CDT 2020
+base.0=C\:\\Semestres_TEC\\Semestre 6\\AppMob\\Proyecto Final\\AppMovilesTec\\android\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

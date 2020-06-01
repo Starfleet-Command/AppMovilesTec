@@ -15,7 +15,7 @@ import {
 import { View, Image, TextInput, TouchableOpacity, Linking, AsyncStorage } from 'react-native';
 import styles, { IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL } from './styles';
 import wishlist from '../wishlist.json'
-
+import * as firebase from 'firebase';
 
 
 export default class CardItemBordered extends Component {
@@ -34,6 +34,7 @@ export default class CardItemBordered extends Component {
     };
 
     async getCardsFromApiAsync() {
+
         return fetch(this.state.uri)
             .then(response => response.json())
             .then(responseJson => {
@@ -48,6 +49,7 @@ export default class CardItemBordered extends Component {
                         },
                         function () { },
                     );
+                    console.log(this.state.id);
                 }
             })
             .catch(error => {
@@ -56,16 +58,43 @@ export default class CardItemBordered extends Component {
     }
 
     storeData = async () => {
-        try {
-            await AsyncStorage.setItem('name', this.state.card);
-            // console.log(AsyncStorage.getItem('name'));
-            this.props.navigation.push('Wishlist', {
-                card: this.state.card, image_uri: this.state.image_uri, price: this.state.price, quantity: this.state.quantity, id: this.state.id,
-            })
+        
+        var carddata = this.state;
+        await firebase.database().ref('users/' + firebase.auth().currentUser.uid+'/cards/'+carddata.id).once('value').then(function(snapshot){
+            var cardexists = snapshot.val();
+            console.log(cardexists);
 
-        } catch (error) {
-            console.error(error);
-        }
+            if(cardexists){
+                console.log("Card already exists!");
+                try{
+                firebase.database().ref('users/' + firebase.auth().currentUser.uid+'/cards/'+carddata.id).update({
+                    quantity: cardexists.quantity+1,
+                });
+                console.log("Quantity incremented.");
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+
+            else{
+                try {
+                        firebase.database().ref('users/' + firebase.auth().currentUser.uid+'/cards/'+carddata.id).set({
+                        //uid: firebase.auth().currentUser.uid,
+                        id: carddata.id,
+                        card: carddata.card,
+                        image_uri: carddata.image_uri,
+                        price: carddata.price,
+                        quantity: 1,
+        
+                    })
+                    .then(() => {
+                        console.log('Card added!')});
+            
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        });
     }
 
 

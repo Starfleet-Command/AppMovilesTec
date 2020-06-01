@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Semestres_TEC\\Semestre 6\\AppMob\\AppMovilesTec\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
+            "outputFile": "C:\\Semestres_TEC\\Semestre 6\\AppMob\\Proyecto Final\\AppMovilesTec\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
             "map": [
                 {
                     "source": "C:\\Users\\sebas\\.gradle\\caches\\transforms-2\\files-2.1\\6029c1862846be4a7ec1743d4d20ec64\\material-1.1.0\\res\\values-small-v4\\values-small-v4.xml",

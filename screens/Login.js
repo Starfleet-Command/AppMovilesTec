@@ -121,7 +121,7 @@ export default class Demo extends Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button} onPress={this.handleLogin}>
+            <TouchableOpacity type="button" style={styles.button} onPress={this.handleLogin}>
                 <Text style={styles.buttonText}>
                   Iniciar Sesion
                 </Text>

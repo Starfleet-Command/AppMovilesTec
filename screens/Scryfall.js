@@ -14,7 +14,7 @@ import {
 } from 'native-base';
 import { View, Image, TextInput, TouchableOpacity, Linking, AsyncStorage } from 'react-native';
 import styles, { IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL } from './styles';
-import wishlist from '../wishlist.json'
+import wishlist from '../wishlist.json';
 import * as firebase from 'firebase';
 
 
@@ -102,7 +102,7 @@ export default class CardItemBordered extends Component {
     render() {
         return (
             <Container>
-                <Header />
+                <Header style={{backgroundColor: '#8fb4ff'}} />
                 <Content padder>
                     <View style={styles.container}>
                         <TextInput

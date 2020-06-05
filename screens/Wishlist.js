@@ -26,13 +26,18 @@ export default class CardItemBordered extends Component {
                 vertical: -1,
             },
             header: (
-                <Header searchBar rounded>
+                <Header Header style = {
+                    {
+                        backgroundColor: '#8fb4ff'
+                    }
+                }
+                searchBar rounded >
                     <Button transparent>
                         <Icon name="menu" />
                     </Button>
 
                     <Item>
-                        <Input placeholder="Buscar..." onChangeText={text => params.searchText(text)} />
+                        <Input placeholder="Search in my wishlist" onChangeText={text => params.searchText(text)} />
                         <Icon name="md-search" />
                     </Item>
 

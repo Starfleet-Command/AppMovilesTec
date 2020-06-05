@@ -1,4 +1,4 @@
-#Fri Jun 05 12:33:06 CDT 2020
+#Fri Jun 05 15:03:50 CDT 2020
 base.0=C\:\\Users\\danie\\Programacion\\GitTODO\\GitMoviles\\AppMovilesTec\\android\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

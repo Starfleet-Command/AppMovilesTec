@@ -117,25 +117,25 @@ export default class Demo extends Component {
 
             <TouchableOpacity>
               <View style={styles.forgotPassword}>
-                <Text style={styles.forgotText}>¿Olvide mi password?</Text>
+                <Text style={styles.forgotText}>Forgot your password?</Text>
               </View>
             </TouchableOpacity>
 
             <TouchableOpacity type="button" style={styles.button} onPress={this.handleLogin}>
                 <Text style={styles.buttonText}>
-                  Iniciar Sesion
+                  Log in
                 </Text>
             </TouchableOpacity>
 
           </View>
         </Animated.View>
         <View style={styles.normalContainer}>
-          <Text style={styles.normalText}>¿No tienes cuenta?</Text>
+          <Text style={styles.normalText}>New to the app?</Text>
         </View>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate("Register")}>
           <View style={styles.createAccount}>
-            <Text style={styles.createText}>Crear una núeva</Text>
+            <Text style={styles.createText}>Create a new account</Text>
           </View>
         </TouchableOpacity>
       </View>

@@ -174,6 +174,7 @@ export default class Home extends Component {
               iconLeft
               title="Scryfall"
               onPress={() => this.props.navigation.push('Scryfall', {})}>
+              <Icon name="search"></Icon>
                 <Text style={{textAlign:'center'}}>Card search</Text>
               </Button>
           </View>
@@ -191,10 +192,6 @@ export default class Home extends Component {
                 </Button>
             </View>
         </Content>
-
-        {/* <Footer>
-         
-        </Footer> */}
       </Container>
     );
   }

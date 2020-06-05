@@ -144,7 +144,7 @@ export default class Assistant extends Component {
     render() {
         return (
             <Container>
-                <Header />
+                <Header style={{backgroundColor: '#8fb4ff'}} />
                 <Content padder>
                     <View style={styles.container}>
                         <TextInput
@@ -159,7 +159,7 @@ export default class Assistant extends Component {
                                 button
                                 onPress={() => this.TalkAI()}
                                 style={styles.buttonText}>
-                                Query
+                                Submit
                              </Text>
                         </View>
                     </TouchableOpacity>

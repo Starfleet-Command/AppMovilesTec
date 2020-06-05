@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Header, Content, Card, CardItem, TouchableHighlight, Text, Body, Footer, FooterTab, Thumbnail, Button, Icon, Item, Input } from "native-base";
-import { View, Image, FlatList, Linking, AsyncStorage } from 'react-native';
+import { View, Image, FlatList, Linking, AsyncStorage} from 'react-native';
 import styles from './styles';
 import * as firebase from 'firebase';
 

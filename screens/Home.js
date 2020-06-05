@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-import { Share, ActivityIndicator } from 'react-native';
+import { Share, ActivityIndicator, StyleSheet } from 'react-native';
 import styles, { IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL } from './styles';
 import {
   Container,
@@ -48,21 +48,17 @@ export default class Home extends Component {
         vertical: -1,
       },
       header: (
-        <Header searchBar rounded>
-          <Button transparent>
-            <Icon name="menu" />
-          </Button>
-
-          <Item>
-            <Input placeholder="Buscar..." />
-            <Icon name="people" />
-          </Item>
-
-          <Button transparent>
-            <Icon name="funnel"></Icon>
-          </Button>
-
-
+        <Header style={{backgroundColor: '#8fb4ff'}}>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontFamily: 'Cochin',
+              fontSize: 25,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            Mythic Companion App
+          </Text>
         </Header>
       ),
 
@@ -128,67 +124,96 @@ export default class Home extends Component {
     }
     return (
       <Container>
-        <Header>
-          <Text>Welcome: {user.displayName}</Text>
+        <Text
+          style={{
+            fontWeight: 'bold',
+            textAlign: 'center',
+            fontFamily: 'Roboto',
+            fontSize: 20,
+          }}>
+          Welcome: {user.displayName}!
+        </Text>
 
-        </Header>
+        <Content>
+          <View style={style.container}>
+            <Button Button style = {
+              {
+                backgroundColor: '#0bc1e6'
+              }
+            }
+              iconLeft
+              title="Wishlist"
+              onPress={() =>
+                this.props.navigation.push('Wishlist', {
+                  currentUser: this.state.currentUser,
+                })
+              }>
+              <Icon name="list" />
+              <Text style={{textAlign: 'center'}}>Wishlist</Text>
+            </Button>
 
-        <Content />
+            <Button Button style = {
+              {
+                backgroundColor: '#4d80f0'
+              }
+            }
+              iconLeft
+              title="Assistant"
+              onPress={() => this.props.navigation.push('Assistant', {})}>
+              <Icon name="lightbulb" />
+              <Text style={{textAlign: 'center'}}>Assistant</Text>
+            </Button>
+          </View>
 
-        <Footer>
-          <FooterTab>
-            <Button>
-              <Text
-                button
-                onPress={() =>
-                  this.props.navigation.push('Wishlist', {
-                    currentUser: this.state.currentUser,
-                  })
+          <View style={style.container}>
+              <Button Button style = {
+                {
+                  backgroundColor: '#999ea8'
                 }
-              >
-                Wishlist
-                </Text>
+              }
+              iconLeft
+              title="Scryfall"
+              onPress={() => this.props.navigation.push('Scryfall', {})}>
+                <Text style={{textAlign:'center'}}>Card search</Text>
+              </Button>
+          </View>
+              
+            <View style={style.container}>
+              <Button style={{
+                backgroundColor:'red',
+              }}
+                iconLeft
+                title="Logout"
+                onPress = {this.signOutUser}>
+                  <Text>
+                    Logout
+                  </Text>
+                </Button>
+            </View>
+        </Content>
 
-            </Button>
-            <Button active>
-              <Text>Browse</Text>
-            </Button>
-            <Button>
-              <Text
-                button
-                onPress={() =>
-                  this.props.navigation.push('Assistant', {
-                  })
-                }
-
-              >
-                Assistant
-              </Text>
-            </Button>
-            <Button>
-              <Text
-                button
-                onPress={() =>
-                  this.props.navigation.push('Scryfall', {
-                  })
-                }
-              >
-                Card Search
-                </Text>
-            </Button>
-            <Button>
-              <Text
-                button
-                onPress={
-                  this.signOutUser
-                }
-              >
-                Logout
-                </Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+        {/* <Footer>
+         
+        </Footer> */}
       </Container>
     );
   }
 }
+
+const style = StyleSheet.create({
+  container:{
+    flex:1,
+    flexDirection: 'row',
+    height: 100,
+    marginTop: 10,
+    alignItems:'center',
+    justifyContent:'center',
+    alignContent:'stretch',
+  },
+  buttonLeft:{
+    justifyContent:'center'
+  },
+  buttonContainter:{
+    flex: 1,
+  }
+})

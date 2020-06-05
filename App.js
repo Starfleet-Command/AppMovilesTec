@@ -1,7 +1,15 @@
 /* eslint-disable */
-import React, { Component, Container } from 'react';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
+import React, {
+  Component,
+  Container
+} from 'react';
+import {
+  createAppContainer,
+  createSwitchNavigator
+} from 'react-navigation'
+import {
+  createStackNavigator
+} from 'react-navigation-stack'
 import Login from './screens/Login'
 import Home from './screens/Home'
 import Details from './screens/Details'
@@ -28,30 +36,25 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const AppStack = createStackNavigator({
-    Home: Home,
-    Details: Details,
-    Wishlist: Wishlist,
-    Scryfall: Scryfall,
-    Assistant: Assistant,
+  Home: Home,
+  Details: Details,
+  Wishlist: Wishlist,
+  Scryfall: Scryfall,
+  Assistant: Assistant,
 });
 
-const AuthStack = createStackNavigator(
-  {
-    Login: Login,
-    Register: Register,
-    Loading: Loading,
-  }
-);
+const AuthStack = createStackNavigator({
+  Login: Login,
+  Register: Register,
+  Loading: Loading,
+});
 
 export default createAppContainer(
-  createSwitchNavigator(
-    {
-      Loading: Loading,
-      App: AppStack,
-      Auth: AuthStack
-    },
-    {
-      initialRouteName: "Loading"
-    }
-  )
+  createSwitchNavigator({
+    Loading: Loading,
+    App: AppStack,
+    Auth: AuthStack
+  }, {
+    initialRouteName: "Loading"
+  })
 );

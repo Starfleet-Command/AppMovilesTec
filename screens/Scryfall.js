@@ -103,7 +103,6 @@ export default class CardItemBordered extends Component {
     render() {
         return (
             <Container>
-                <Header style={{backgroundColor: '#8fb4ff'}} />
                 <Content padder>
                     <View style={styles.container}>
                         <TextInput
@@ -129,17 +128,21 @@ export default class CardItemBordered extends Component {
                         </View>
                     </TouchableOpacity>
                     <Card>
-                        <CardItem header bordered>
-                            <Text>
+                        {/* <CardItem header bordered>
+                             <Text>
                                 {this.state.card}: ${this.state.price}
                             </Text>
-                        </CardItem>
+                        </CardItem> */}
                         <CardItem bordered>
                             <Body>
                                 <Image
                                     style={{ width: 146, height: 204 }}
                                     source={{ uri: this.state.image_uri }}
                                 />
+                                <Text>
+                                    {this.state.card}{'\n'}
+                                    ${this.state.price}
+                                </Text>
                             </Body>
                         </CardItem>
                         <CardItem

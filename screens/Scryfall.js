@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import {
     Container,
@@ -106,7 +107,7 @@ export default class CardItemBordered extends Component {
                 <Content padder>
                     <View style={styles.container}>
                         <TextInput
-                            placeholder="Type the card here"
+                            placeholder="Type the card you want to search here"
                             onChangeText={card =>
                                 this.setState({
                                     card,
@@ -162,7 +163,7 @@ export default class CardItemBordered extends Component {
                     </View>
 
                 </Content>
-            </Container >
+            </Container>
         );
     }
 }

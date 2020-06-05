@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from "react";
 import { Container, Header, Content, Card, CardItem, TouchableHighlight, Text, Body, Footer, FooterTab, Thumbnail, Button, Icon, Item, Input } from "native-base";
 import { View, Image, FlatList, Linking, AsyncStorage} from 'react-native';
@@ -153,9 +154,7 @@ export default class CardItemBordered extends Component {
         return (
             <View>
                 <Card>
-                    <Text>
-                        The most recently added card is {this.state.latestCard}
-                    </Text>
+                    
                 </Card>
                 <FlatList
                     vertical={true}
@@ -182,7 +181,7 @@ export default class CardItemBordered extends Component {
                                         Quantity: {item.quantity + '\n'}
                                         Total Price: {item.price * item.quantity}
                                     </Text>
-                                    <Text onPress={() => this.removeFavorite(item)}>Borrar de Favoritos</Text>
+                                    <Text onPress={() => this.removeFavorite(item)} style={{textAlign:'center', color:'red'}}>Delete from my wishlist</Text>
                                     
                                     
                                 </Body>

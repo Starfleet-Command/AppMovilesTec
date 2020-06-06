@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import {
     Container,
@@ -35,6 +36,7 @@ export default class Assistant extends Component {
         scryfallUri: '',
         legality: [],
         response: '',
+        isLegal: '',
     };
 
     async getCardInfo() {
@@ -72,23 +74,31 @@ export default class Assistant extends Component {
                     else if (this.state.intent == "Legality") {
                         var results = [];
                         var format = this.state.formatEntity;
+
                         this.setState(
                             {
-                                response: responseJson.legalities
+                                legality: responseJson.legalities
                             },
                             function () { },
 
                         );
 
-                        for (var key in legality) {
+                        for (var key in this.state.legality) {
                             if (key == format) {
 
-                                this.state.isLegal = legality[0].key
+                                this.state.isLegal = this.state.legality[key]
                             }
 
                         }
-                    }
 
+                        this.setState(
+                            {
+                                response: this.state.isLegal
+                            },
+                            function () { },
+
+                        );
+                    }
                     else if (this.state.intent == "Set") {
                         this.setState(
                             {
@@ -121,7 +131,7 @@ export default class Assistant extends Component {
                         },
                         function () { },
                     );
-                    if (intent == "Legality") {
+                    if (this.state.intent == "Legality") {
                         this.setState(
                             {
                                 formatEntity: responseJson.entities[1].entity,
